@@ -1,8 +1,12 @@
 package com.dam.damrestoloader;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
+
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,8 +17,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private JSONArray loadJSONFileToString(String fileName) {
         InputStream file = null;
@@ -102,6 +109,34 @@ public class MainActivity extends AppCompatActivity {
 */
 
     }
+
+   /* private void createDocumentInFirestore(String id, String title, ModelImportInv17 data){
+        if (!title.isEmpty()){
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("id", id);
+            map.put("title", title);
+            map.put("content", content);
+            db.collection("NOTES").document(id).set(map)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Toast.makeText(MainActivity.this, "Document added successfully", Toast.LENGTH_SHORT).show();
+                            etNoteTitle.setText("");
+                            etNoteContent.setText("");
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this, "Error adding document : " + e, Toast.LENGTH_SHORT).show();
+                        }
+                    })
+            ;
+        } else {
+            Toast.makeText(MainActivity.this, "Empty fields aren't allowed", Toast.LENGTH_SHORT).show();
+        }
+
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
