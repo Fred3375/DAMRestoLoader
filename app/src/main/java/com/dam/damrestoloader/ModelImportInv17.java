@@ -11,8 +11,8 @@ import java.util.HashMap;
 
 public class ModelImportInv17 {
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+    private String id;
+    private String type;
     private String sname;
     private String appellation;
     private String region;
@@ -26,6 +26,22 @@ public class ModelImportInv17 {
     private int quantite;
     private int pv;
     private String name;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getSname() {
         return sname;
@@ -134,7 +150,9 @@ public class ModelImportInv17 {
     public ModelImportInv17() {
     }
 
-    public ModelImportInv17(String sname, String appellation, String region, String domaine, String sappellation, String sregion, String sdomaine, String resto, String cuvee, String millesime, int quantite, int pv, String name) {
+    public ModelImportInv17(String id, String type, String sname, String appellation, String region, String domaine, String sappellation, String sregion, String sdomaine, String resto, String cuvee, String millesime, int quantite, int pv, String name) {
+        this.id = id;
+        this.type = type;
         this.sname = sname;
         this.appellation = appellation;
         this.region = region;
